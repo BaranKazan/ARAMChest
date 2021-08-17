@@ -9,6 +9,9 @@ public class Summoner {
     private Region region;
     //Summoner Icon?
 
+    public Summoner() {
+    }
+
     public Summoner(String name, Region region) {
         this.name = name;
         this.region = region;

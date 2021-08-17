@@ -1,7 +1,7 @@
 package com.BaranKazan.ARAMChest.Summoner;
 
 import com.BaranKazan.ARAMChest.Champion.Champion;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.BaranKazan.ARAMChest.Enum.Region;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,5 +14,9 @@ public class SummonerService {
         List<Champion> availableChampion = new ArrayList<Champion>();
         availableChampion.add(new Champion(4444, false));
         return availableChampion;
+    }
+
+    public Summoner getSummoner(String summonerName, Region region){
+        return new Summoner();
     }
 }

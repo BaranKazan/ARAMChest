@@ -2,26 +2,26 @@ package com.BaranKazan.ARAMChest.Champion;
 
 public class Champion {
 
-    private float id;
+    private long id;
     private boolean chestUnlocked;
 
     public Champion() {
     }
 
-    public Champion(float id) {
+    public Champion(long id) {
         this.id = id;
     }
 
-    public Champion(float id, boolean chestUnlocked){
+    public Champion(long id, boolean chestUnlocked){
         this.id = id;
         this.chestUnlocked = chestUnlocked;
     }
 
-    public float getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(float id) {
+    public void setId(long id) {
         this.id = id;
     }
 

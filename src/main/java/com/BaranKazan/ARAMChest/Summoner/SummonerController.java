@@ -5,7 +5,6 @@ import com.BaranKazan.ARAMChest.Enum.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,10 +23,7 @@ public class SummonerController {
     public List<Champion> getAvailableChampionChest(
         @PathVariable("summonerName") String summonerName,
         @PathVariable("region") Region region){
-
-        System.out.println(summonerName);
-        System.out.println(region);
-        Summoner summoner = new Summoner(summonerName, region);
+        Summoner summoner = summonerService.getSummoner(summonerName, region);
         List<Champion> champions = summonerService.getAvailableChampionChest(summoner);
         return champions;
     }
