@@ -1,4 +1,4 @@
-package com.BaranKazan.ARAMChest.Enum;
+package com.BaranKazan.ARAMChest.enums;
 
 public enum Lane {
     TOP,

@@ -1,4 +1,4 @@
-package com.BaranKazan.ARAMChest.Helper;
+package com.BaranKazan.ARAMChest.helper;
 
 public class InputControl {
 

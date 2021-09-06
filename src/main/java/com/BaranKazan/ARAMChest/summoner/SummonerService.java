@@ -1,4 +1,4 @@
-package com.BaranKazan.ARAMChest.Summoner;
+package com.BaranKazan.ARAMChest.summoner;
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
@@ -9,7 +9,7 @@ import com.merakianalytics.orianna.types.core.summoner.Summoner;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey("RGAPI-5830f40b-76b4-4dcc-b08a-8fc123544401");
+        Orianna.setRiotAPIKey("RGAPI-eb4c64de-78be-46aa-8cb7-86f0c04a83a7");
     }
 
 
