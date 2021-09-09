@@ -25,10 +25,9 @@ public class SummonerController {
     }
 
     @GetMapping(path = "/summonerName/{summonerName}/region/{region}")
-    public Summoner getAvailableChampionChest(
+    public void getAvailableChampionChest(
             @PathVariable("summonerName") String summonerName,
             @PathVariable("region") Region region) {
-        Summoner summoner = summonerService.getSummoner(summonerName, region);
-        return summoner;
+        summonerService.getAvalibleChest(summonerName, region);
     }
 }
