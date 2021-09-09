@@ -1,12 +1,15 @@
 package com.BaranKazan.ARAMChest.summoner;
 
+import com.BaranKazan.ARAMChest.Champion.Champion;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMasteries;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMastery;
-import com.merakianalytics.orianna.types.core.staticdata.Champion;
 import org.springframework.stereotype.Service;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SummonerService {
@@ -16,21 +19,22 @@ public class SummonerService {
     }
 
 
-    public void getAvalibleChest(String summonerName, Region region) {
-        final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
+    public List<Champion> getAvalibleChest(String summonerName, Region region) {
 
+        final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
         final ChampionMasteries cms = summoner.getChampionMasteries();
 
+        List<Champion> champions = new ArrayList<Champion>();
+
         for (ChampionMastery championMastery : cms) {
-            System.out.println("Champion: "+championMastery.getChampion().getName()+" Chest Unlocked: "+championMastery.isChestGranted());
+            champions.add(new Champion(
+               championMastery.getChampion().getId(),
+               championMastery.getChampion().getName(),
+               championMastery.getChampion().getImage().getURL(),
+               championMastery.isChestGranted()
+            ));
         }
-
-        /*final Champion champion = Champion.named("Jhin").withRegion(region).get();
-        final ChampionMastery cm = summoner.getChampionMastery(champion);
-        System.out.println(champion.getId());
-        System.out.println(cm.getPoints());
-        System.out.println(cm.getLevel());*/
-
+        return champions;
     }
 
 }

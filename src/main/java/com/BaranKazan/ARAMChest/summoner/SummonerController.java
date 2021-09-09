@@ -1,11 +1,12 @@
 package com.BaranKazan.ARAMChest.summoner;
 
+import com.BaranKazan.ARAMChest.Champion.Champion;
 import com.merakianalytics.orianna.types.common.Region;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
 public class SummonerController {
@@ -25,9 +26,9 @@ public class SummonerController {
     }
 
     @GetMapping(path = "/summonerName/{summonerName}/region/{region}")
-    public void getAvailableChampionChest(
+    public List<Champion> getAvailableChampionChest(
             @PathVariable("summonerName") String summonerName,
             @PathVariable("region") Region region) {
-        summonerService.getAvalibleChest(summonerName, region);
+        return summonerService.getAvalibleChest(summonerName, region);
     }
 }
