@@ -2,8 +2,8 @@ package com.BaranKazan.ARAMChest.Champion;
 
 public class Champion {
 
-    private int id;
-    private boolean chestUnlocked;
+    private final int id;
+    private final boolean chestUnlocked;
 
     public Champion(int id, boolean chestUnlocked) {
         this.id = id;
@@ -14,15 +14,7 @@ public class Champion {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public boolean isChestUnlocked() {
         return chestUnlocked;
-    }
-
-    public void setChestUnlocked(boolean chestUnlocked) {
-        this.chestUnlocked = chestUnlocked;
     }
 }
