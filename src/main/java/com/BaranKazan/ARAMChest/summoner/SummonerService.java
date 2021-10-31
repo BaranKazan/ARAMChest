@@ -29,6 +29,7 @@ public class SummonerService {
         for (ChampionMastery championMastery : cms) {
             champions.add(new Champion(
                championMastery.getChampion().getId(),
+               championMastery.getChampion().getName(),
                championMastery.isChestGranted()
             ));
         }
