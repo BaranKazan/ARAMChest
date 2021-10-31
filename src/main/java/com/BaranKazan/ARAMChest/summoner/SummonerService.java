@@ -15,7 +15,7 @@ import java.util.List;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey("RGAPI-9c273842-5aa4-41a9-b4f8-45f6899a98de");
+        Orianna.setRiotAPIKey("RGAPI-b89f4d94-2d44-4728-ade9-517650010fa7");
     }
 
 
@@ -24,7 +24,7 @@ public class SummonerService {
         final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
         final ChampionMasteries cms = summoner.getChampionMasteries();
 
-        List<Champion> champions = new ArrayList<Champion>();
+        List<Champion> champions = new ArrayList<>();
 
         for (ChampionMastery championMastery : cms) {
             champions.add(new Champion(
