@@ -15,7 +15,7 @@ import java.util.List;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey("RGAPI-b89f4d94-2d44-4728-ade9-517650010fa7");
+        Orianna.setRiotAPIKey("RGAPI-2c5502eb-bce2-4c82-a402-49680e7ac0b7");
     }
 
 
