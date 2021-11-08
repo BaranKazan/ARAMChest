@@ -15,7 +15,7 @@ import java.util.List;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey("YOU THOUGHT!");
+        Orianna.setRiotAPIKey("RGAPI-2c5502eb-bce2-4c82-a402-49680e7ac0b7");
     }
 
 
@@ -24,13 +24,12 @@ public class SummonerService {
         final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
         final ChampionMasteries cms = summoner.getChampionMasteries();
 
-        List<Champion> champions = new ArrayList<Champion>();
+        List<Champion> champions = new ArrayList<>();
 
         for (ChampionMastery championMastery : cms) {
             champions.add(new Champion(
                championMastery.getChampion().getId(),
                championMastery.getChampion().getName(),
-               championMastery.getChampion().getImage().getURL(),
                championMastery.isChestGranted()
             ));
         }
