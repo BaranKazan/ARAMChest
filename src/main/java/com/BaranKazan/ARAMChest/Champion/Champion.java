@@ -13,6 +13,7 @@ public class Champion {
     }
 
     public int getId() {
+
         return id;
     }
 
