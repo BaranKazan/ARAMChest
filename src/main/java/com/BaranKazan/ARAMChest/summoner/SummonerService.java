@@ -10,15 +10,12 @@ import com.merakianalytics.orianna.types.core.summoner.Summoner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class SummonerService {
 
     public SummonerService() {
-        Map<String, String> env = System.getenv();
-        String key = env.get("RIOT_API_KEY");
-        Orianna.setRiotAPIKey(key);
+        Orianna.setRiotAPIKey("RGAPI-2c5502eb-bce2-4c82-a402-49680e7ac0b7");
     }
 
 
