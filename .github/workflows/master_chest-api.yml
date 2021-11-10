@@ -23,7 +23,7 @@ jobs:
 
       - name: Build with Maven
         env:
-          RIOT_API_KEY: ${{secrets.RIOT_API_KEY}}
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -41,6 +41,8 @@ jobs:
     
     steps:
       - name: Download artifact from build job
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         uses: actions/download-artifact@v2
         with:
           name: java-app
