@@ -22,8 +22,6 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        env:
-          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -31,13 +29,6 @@ jobs:
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
-
-      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-        run: |
-          echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.RIOT_API_KEY }}
-          echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{secrets.RIOT_API_KEY}} | sed 's/./& /g'
 
   deploy:
     runs-on: ubuntu-latest
