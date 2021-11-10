@@ -18,6 +18,8 @@ public class SummonerService {
     public SummonerService() {
         Map<String, String> env = System.getenv();
         String key = env.get("RIOT_API_KEY");
+        System.out.println("DEBUGGING:");
+        System.out.println(key);
         Orianna.setRiotAPIKey(key);
     }
 
