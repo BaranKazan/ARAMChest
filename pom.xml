@@ -31,6 +31,16 @@
 			<artifactId>orianna</artifactId>
 			<version>4.0.0-rc8</version>
 		</dependency>
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-security-keyvault-secrets</artifactId>
+			<version>4.3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-identity</artifactId>
+			<version>1.4.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
