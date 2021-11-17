@@ -16,7 +16,7 @@ import java.util.List;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey("Hello");
+        Orianna.setRiotAPIKey(AzureSecrets.getRiotApiKey());
     }
 
 
