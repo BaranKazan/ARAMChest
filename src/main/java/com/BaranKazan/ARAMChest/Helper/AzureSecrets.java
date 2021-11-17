@@ -12,6 +12,8 @@ public class AzureSecrets {
 
     public static String getRiotApiKey() {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
+        System.out.println("DEBUGGING KEY:");
+        System.out.println(keyVaultName);
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
         SecretClient secretClient = new SecretClientBuilder()
