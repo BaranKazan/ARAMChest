@@ -9,10 +9,12 @@ on:
       - master
   workflow_dispatch:
 
+env:
+  THE_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: Production
 
     steps:
       - uses: actions/checkout@v2
@@ -37,7 +39,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
@@ -50,5 +52,5 @@ jobs:
         with:
           app-name: 'chest-api'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_50FD6C8DE7224A038E00DC807C34D281 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F74F431B8CF24955820F247009145454 }}
           package: '*.jar'
