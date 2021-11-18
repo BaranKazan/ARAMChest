@@ -17,10 +17,6 @@ public class AzureSecrets {
         System.out.println(keyVaultName);
         System.out.println(keyVaultUri);
 
-        for (int i = 0; i < keyVaultName.length(); i++){
-            System.out.print(keyVaultName.charAt(i));
-        }
-
         SecretClient secretClient = new SecretClientBuilder()
                 .vaultUrl(keyVaultUri)
                 .credential(new DefaultAzureCredentialBuilder().build())
