@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  THE_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
+  KEY_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
 
 jobs:
   build:
