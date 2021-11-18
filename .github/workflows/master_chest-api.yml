@@ -9,9 +9,6 @@ on:
       - master
   workflow_dispatch:
 
-env:
-  KEY_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
