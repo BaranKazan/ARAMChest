@@ -16,7 +16,10 @@ public class AzureSecrets {
         System.out.println("DEBUGGING KEY:");
         System.out.println(keyVaultName);
         System.out.println(keyVaultUri);
-        System.out.println(new String(keyVaultName) + " hello");
+
+        for (int i = 0; i < keyVaultName.length(); i++){
+            System.out.print(keyVaultName.charAt(i));
+        }
 
         SecretClient secretClient = new SecretClientBuilder()
                 .vaultUrl(keyVaultUri)
