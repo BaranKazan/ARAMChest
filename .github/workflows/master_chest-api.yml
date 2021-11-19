@@ -45,6 +45,8 @@ jobs:
 
       - name: Azure Login
         uses: Azure/login@v1
+        env:
+          credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
