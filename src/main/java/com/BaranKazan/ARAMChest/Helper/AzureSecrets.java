@@ -5,9 +5,6 @@ import com.azure.security.keyvault.secrets.SecretClient;
 import com.azure.security.keyvault.secrets.SecretClientBuilder;
 import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
-import java.io.Console;
-import java.util.Map;
-
 public class AzureSecrets {
 
     public static String getRiotApiKey() {
