@@ -50,4 +50,4 @@ jobs:
           app-name: 'chest-api'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F74F431B8CF24955820F247009145454 }}
-          package: '*.jar'
+          package: '${{ github.workspace }}/*.jar'
