@@ -1,7 +1,6 @@
 package com.BaranKazan.ARAMChest.summoner;
 
 import com.BaranKazan.ARAMChest.Champion.Champion;
-import com.BaranKazan.ARAMChest.Helper.AzureSecrets;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMasteries;
@@ -16,9 +15,9 @@ import java.util.List;
 public class SummonerService {
 
     public SummonerService() {
-        Orianna.setRiotAPIKey(AzureSecrets.getRiotApiKey());
+        String key = System.getenv("RIOT_API_KEY");
+        Orianna.setRiotAPIKey(key);
     }
-
 
     public List<Champion> getAvalibleChest(String summonerName, Region region) {
 
