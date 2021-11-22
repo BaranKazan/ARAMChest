@@ -43,18 +43,9 @@ jobs:
         with:
           name: java-app
 
-      - name: Azure Login
-        uses: Azure/login@v1
-        with: # Set Azure credentials secret as an input
-          credentials: ${{ secrets.AZURE_CREDENTIALS }}
-        env: # Or as an environment variable
-          credentials: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v1
         with:
-          app-name: 'chest-api'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F74F431B8CF24955820F247009145454 }}
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: '*.jar'
