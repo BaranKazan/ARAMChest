@@ -2,19 +2,19 @@ package com.BaranKazan.ARAMChest.Champion;
 
 public class Champion {
 
-    private final int id;
-    private final boolean chestUnlocked;
+    private final String name;
+    private final String imageURL;
 
-    public Champion(int id, boolean chestUnlocked) {
-        this.id = id;
-        this.chestUnlocked = chestUnlocked;
+    public Champion(String name, String imageURL) {
+        this.name = name;
+        this.imageURL = imageURL;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public boolean isChestUnlocked() {
-        return chestUnlocked;
+    public String getImageURL() {
+        return imageURL;
     }
 }

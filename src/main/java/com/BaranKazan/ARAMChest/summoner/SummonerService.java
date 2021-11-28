@@ -26,10 +26,13 @@ public class SummonerService {
         HashSet<Champion> champions = new HashSet<>();
 
         for (ChampionMastery championMastery : cms) {
-            champions.add(new Champion(
-               championMastery.getChampion().getId(),
-               championMastery.isChestGranted()
-            ));
+
+            if(!championMastery.isChestGranted()){
+                champions.add(new Champion(
+                        championMastery.getChampion().getName(),
+                        championMastery.getChampion().getImage().getURL()
+                ));
+            }
         }
 
         MySummoner mySummoner = new MySummoner(summoner.getName(), summoner.getRegion(),
