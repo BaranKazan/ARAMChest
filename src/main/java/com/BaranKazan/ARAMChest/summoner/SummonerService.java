@@ -1,6 +1,7 @@
 package com.BaranKazan.ARAMChest.summoner;
 
 import com.BaranKazan.ARAMChest.champion.Champion;
+import com.BaranKazan.ARAMChest.exception.SummonerNotFoundException;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMasteries;
@@ -21,13 +22,16 @@ public class SummonerService {
     public MySummoner getAvalibleChest(String summonerName, Region region) {
 
         final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
+
+        if (summoner.getId() == null)
+            throw new SummonerNotFoundException("Summoner does not exist");
         final ChampionMasteries cms = summoner.getChampionMasteries();
 
         HashSet<Champion> champions = new HashSet<>();
 
         for (ChampionMastery championMastery : cms) {
 
-            if(!championMastery.isChestGranted()){
+            if (!championMastery.isChestGranted()) {
                 champions.add(new Champion(
                         championMastery.getChampion().getName(),
                         championMastery.getChampion().getImage().getURL()
