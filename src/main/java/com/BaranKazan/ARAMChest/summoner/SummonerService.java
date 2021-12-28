@@ -1,6 +1,6 @@
 package com.BaranKazan.ARAMChest.summoner;
 
-import com.BaranKazan.ARAMChest.Champion.Champion;
+import com.BaranKazan.ARAMChest.champion.Champion;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMasteries;

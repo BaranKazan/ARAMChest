@@ -1,4 +1,4 @@
-package com.BaranKazan.ARAMChest.Champion;
+package com.BaranKazan.ARAMChest.champion;
 
 public class Champion {
 
