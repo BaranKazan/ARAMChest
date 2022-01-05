@@ -17,12 +17,12 @@ public class ApiExceptionHandler {
         HttpStatus notFound = HttpStatus.NOT_FOUND;
 
         ApiException apiException = new ApiException(
-                e.getMessage(),
                 notFound,
+                e.getMessage(),
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
 
-        return new ResponseEntity<>(apiException, notFound);
+            return new ResponseEntity<>(apiException, notFound);
     }
 
     @ExceptionHandler(value = RiotApiKeyExpiredException.class)
@@ -31,8 +31,8 @@ public class ApiExceptionHandler {
         HttpStatus serviceUnavailable = HttpStatus.SERVICE_UNAVAILABLE;
 
         ApiException apiException = new ApiException(
-                e.getMessage(),
                 serviceUnavailable,
+                e.getMessage(),
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
 
