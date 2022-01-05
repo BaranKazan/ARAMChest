@@ -1,8 +1,10 @@
 package com.BaranKazan.ARAMChest.summoner;
 
 import com.BaranKazan.ARAMChest.champion.Champion;
+import com.BaranKazan.ARAMChest.exception.RiotApiKeyExpiredException;
 import com.BaranKazan.ARAMChest.exception.SummonerNotFoundException;
 import com.merakianalytics.orianna.Orianna;
+import com.merakianalytics.orianna.datapipeline.riotapi.exceptions.ForbiddenException;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMasteries;
 import com.merakianalytics.orianna.types.core.championmastery.ChampionMastery;
@@ -21,26 +23,32 @@ public class SummonerService {
 
     public MySummoner getAvalibleChest(String summonerName, Region region) {
 
-        final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
+        MySummoner mySummoner = null;
 
-        if (summoner.getId() == null)
-            throw new SummonerNotFoundException("Summoner does not exist");
-        final ChampionMasteries cms = summoner.getChampionMasteries();
+        try{
+            final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
 
-        HashSet<Champion> champions = new HashSet<>();
+            final ChampionMasteries cms = summoner.getChampionMasteries();
 
-        for (ChampionMastery championMastery : cms) {
+            HashSet<Champion> champions = new HashSet<>();
 
-            if (!championMastery.isChestGranted()) {
-                champions.add(new Champion(
-                        championMastery.getChampion().getName(),
-                        championMastery.getChampion().getImage().getURL()
-                ));
+            for (ChampionMastery championMastery : cms) {
+
+                if (!championMastery.isChestGranted()) {
+                    champions.add(new Champion(
+                            championMastery.getChampion().getName(),
+                            championMastery.getChampion().getImage().getURL()
+                    ));
+                }
             }
-        }
 
-        MySummoner mySummoner = new MySummoner(summoner.getName(), summoner.getRegion(),
-                summoner.getProfileIcon().getImage().getURL(), summoner.getLevel(), champions);
+            mySummoner = new MySummoner(summoner.getName(), summoner.getRegion(),
+                    summoner.getProfileIcon().getImage().getURL(), summoner.getLevel(), champions);
+        } catch (ForbiddenException e){
+            throw new RiotApiKeyExpiredException("The Riot API key has been expired");
+        } catch (NullPointerException e){
+            throw new SummonerNotFoundException("Summoner does not exists");
+        }
 
         return mySummoner;
     }
