@@ -22,18 +22,12 @@ public class SummonerService {
     }
 
     public MySummoner getAvalibleChest(String summonerName, Region region) {
-
         MySummoner mySummoner = null;
-
-        try{
+        try {
             final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
-
             final ChampionMasteries cms = summoner.getChampionMasteries();
-
             HashSet<Champion> champions = new HashSet<>();
-
             for (ChampionMastery championMastery : cms) {
-
                 if (!championMastery.isChestGranted()) {
                     champions.add(new Champion(
                             championMastery.getChampion().getName(),
@@ -41,15 +35,13 @@ public class SummonerService {
                     ));
                 }
             }
-
             mySummoner = new MySummoner(summoner.getName(), summoner.getRegion(),
                     summoner.getProfileIcon().getImage().getURL(), summoner.getLevel(), champions);
-        } catch (ForbiddenException e){
+        } catch (ForbiddenException e) {
             throw new RiotApiKeyExpiredException("The Riot API key has been expired");
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             throw new SummonerNotFoundException("Summoner does not exists");
         }
-
         return mySummoner;
     }
 

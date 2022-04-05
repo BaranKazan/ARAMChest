@@ -13,9 +13,7 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(value = {SummonerNotFoundException.class})
     public ResponseEntity<Object> handleSummonerNotFoundException(SummonerNotFoundException e) {
-
         HttpStatus notFound = HttpStatus.NOT_FOUND;
-
         ApiException apiException = new ApiException(
                 notFound,
                 e.getMessage(),
@@ -27,15 +25,12 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(value = RiotApiKeyExpiredException.class)
     public ResponseEntity<Object> handleRiotApiKeyExpiredException(RiotApiKeyExpiredException e) {
-
         HttpStatus serviceUnavailable = HttpStatus.SERVICE_UNAVAILABLE;
-
         ApiException apiException = new ApiException(
                 serviceUnavailable,
                 e.getMessage(),
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
-
         return new ResponseEntity<>(apiException, serviceUnavailable);
     }
 }
