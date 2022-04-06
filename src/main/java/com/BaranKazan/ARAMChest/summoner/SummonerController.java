@@ -26,6 +26,6 @@ public class SummonerController {
     public MySummoner getAvailableChampionChest(
             @PathVariable("summonerName") String summonerName,
             @PathVariable("region") Region region) {
-        return summonerService.getAvalibleChest(summonerName, region);
+        return summonerService.getAvailableChest(summonerName, region);
     }
 }

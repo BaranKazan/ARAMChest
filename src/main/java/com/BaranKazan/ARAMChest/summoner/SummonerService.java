@@ -21,7 +21,7 @@ public class SummonerService {
         Orianna.setRiotAPIKey(key);
     }
 
-    public MySummoner getAvalibleChest(String summonerName, Region region) {
+    public MySummoner getAvailableChest(String summonerName, Region region) {
         MySummoner mySummoner = null;
         try {
             final Summoner summoner = Summoner.named(summonerName).withRegion(region).get();
