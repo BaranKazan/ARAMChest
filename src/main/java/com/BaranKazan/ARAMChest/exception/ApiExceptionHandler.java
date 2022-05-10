@@ -33,4 +33,15 @@ public class ApiExceptionHandler {
         );
         return new ResponseEntity<>(apiException, serviceUnavailable);
     }
+
+    @ExceptionHandler(value = MyFileNotFoundException.class)
+    public ResponseEntity<Object> handleFileNotFoundException(MyFileNotFoundException e){
+        HttpStatus serviceUnavailable = HttpStatus.NOT_FOUND;
+        ApiException apiException = new ApiException(
+                serviceUnavailable,
+                e.getMessage(),
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(apiException, serviceUnavailable);
+    }
 }
