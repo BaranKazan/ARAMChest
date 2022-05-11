@@ -33,19 +33,18 @@ public class SummonerController {
 
     @RequestMapping(path="/riot.txt")
     public ResponseEntity<InputStreamResource> riotTxt() {
-        String fileName = "./../resources/static/riot.txt";
         File file;
         InputStreamResource inputStreamResource;
+        String fileName = "src/main/resources/static/riot.txt";
 
         try {
             file = new File(fileName);
-            FileInputStream fileInputStream = new FileInputStream(file);
-            inputStreamResource = new InputStreamResource(fileInputStream);
+            inputStreamResource = new InputStreamResource(new FileInputStream(file));
         } catch (FileNotFoundException e) {
             throw new MyFileNotFoundException("The riot.txt file could not be found", e);
         }
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileName)
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=riot.txt")
                 .contentType(MediaType.TEXT_PLAIN)
                 .contentLength(file.length())
                 .body(inputStreamResource);
