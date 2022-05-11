@@ -25,7 +25,7 @@ public class SummonerController {
 
     @RequestMapping(path = "/")
     public ModelAndView welcome() {
-        String pathName = "./../resources/static/index.html";
+        String pathName = "index.html";
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(pathName);
         return modelAndView;
@@ -35,7 +35,7 @@ public class SummonerController {
     public ResponseEntity<InputStreamResource> riotTxt() {
         File file;
         InputStreamResource inputStreamResource;
-        String fileName = "src/main/resources/static/riot.txt";
+        String fileName = "riot.txt";
 
         try {
             file = new File(fileName);
