@@ -1,6 +1,7 @@
 package com.BaranKazan.ARAMChest.summoner;
 
 import com.BaranKazan.ARAMChest.exception.MyFileNotFoundException;
+import com.BaranKazan.ARAMChest.helper.Helper;
 import com.merakianalytics.orianna.types.common.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -17,17 +18,19 @@ import java.io.FileNotFoundException;
 @RestController
 public class SummonerController {
     private final SummonerService summonerService;
+    private final Helper helper;
 
     @Autowired
     public SummonerController(SummonerService summonerService) {
         this.summonerService = summonerService;
+        this.helper = Helper.getInstance();
     }
 
     @RequestMapping(path = "/")
     public ModelAndView welcome() {
-        String pathName = "index.html";
+        String fileName = "index.html";
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(pathName);
+        modelAndView.setViewName(fileName);
         return modelAndView;
     }
 
@@ -35,10 +38,9 @@ public class SummonerController {
     public ResponseEntity<InputStreamResource> riotTxt() {
         File file;
         InputStreamResource inputStreamResource;
-        String fileName = "riot.txt";
-
+        String fileName = "./static/riot.txt";
         try {
-            file = new File(fileName);
+            file = helper.getResourceFile(fileName);
             inputStreamResource = new InputStreamResource(new FileInputStream(file));
         } catch (FileNotFoundException e) {
             throw new MyFileNotFoundException("The riot.txt file could not be found", e);
