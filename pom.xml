@@ -14,7 +14,7 @@
 	<name>ARAMChest</name>
 	<description>Let's see what champions I haven't unlocked chest with.</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
