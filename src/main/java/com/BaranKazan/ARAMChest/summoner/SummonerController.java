@@ -42,7 +42,7 @@ public class SummonerController {
     public ResponseEntity<InputStreamResource> riotTxt() {
         File file;
         InputStreamResource inputStreamResource;
-        String filePath = "classpath:static/riot.txt";
+        String filePath = "riot.txt";
         try {
             file = ResourceUtils.getFile(filePath);
             inputStreamResource = new InputStreamResource(new FileInputStream(file));
