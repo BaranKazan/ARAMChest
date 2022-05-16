@@ -1,13 +1,13 @@
 package com.BaranKazan.ARAMChest.summoner;
 
 import com.BaranKazan.ARAMChest.exception.MyFileNotFoundException;
-import com.BaranKazan.ARAMChest.helper.Helper;
 import com.merakianalytics.orianna.types.common.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,32 +18,36 @@ import java.io.FileNotFoundException;
 @RestController
 public class SummonerController {
     private final SummonerService summonerService;
-    private final Helper helper;
 
     @Autowired
     public SummonerController(SummonerService summonerService) {
         this.summonerService = summonerService;
-        this.helper = Helper.getInstance();
     }
 
     @RequestMapping(path = "/")
     public ModelAndView welcome() {
-        String fileName = "index.html";
+        File file;
+        String filePath = "index.html";
+        try {
+            file = ResourceUtils.getFile(filePath);
+        } catch (FileNotFoundException e) {
+            throw new MyFileNotFoundException(filePath+ "could not be found", e);
+        }
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(fileName);
+        modelAndView.setViewName(file.getPath());
         return modelAndView;
     }
 
-    @RequestMapping(path="/riot.txt")
+    @RequestMapping(path = "/riot.txt")
     public ResponseEntity<InputStreamResource> riotTxt() {
         File file;
         InputStreamResource inputStreamResource;
-        String fileName = "./static/riot.txt";
+        String filePath = "classpath:static/riot.txt";
         try {
-            file = helper.getResourceFile(fileName);
+            file = ResourceUtils.getFile(filePath);
             inputStreamResource = new InputStreamResource(new FileInputStream(file));
         } catch (FileNotFoundException e) {
-            throw new MyFileNotFoundException("The riot.txt file could not be found", e);
+            throw new MyFileNotFoundException(filePath+" could not be found", e);
         }
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=riot.txt")
