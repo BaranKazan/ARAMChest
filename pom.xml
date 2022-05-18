@@ -10,8 +10,7 @@
 	</parent>
 	<groupId>com.BaranKazan</groupId>
 	<artifactId>ARAMChest</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>ARAMChest</name>
 	<description>Let's see what champions I haven't unlocked chest with.</description>
 	<properties>
